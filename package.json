@@ -1,0 +1,24 @@
+{
+  "name": "pharah",
+  "version": "1.0.0",
+  "description": "A cli that aims to managing template code.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ZhaZhengRefn/pharah.git"
+  },
+  "keywords": [
+    "cli",
+    "pharah",
+    "template"
+  ],
+  "author": "ZhaZhengRefn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ZhaZhengRefn/pharah/issues"
+  },
+  "homepage": "https://github.com/ZhaZhengRefn/pharah#readme"
+}
