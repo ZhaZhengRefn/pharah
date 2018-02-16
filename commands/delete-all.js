@@ -2,6 +2,9 @@ const inquirer = require('inquirer')
 const path = require('path')
 
 const writeTemplateList = require('../util').writeTemplateList
+const checkTemplateList = require('../util').checkTemplateList
+
+let templateList = checkTemplateList(path.resolve(__dirname, '../template.json'))
 
 module.exports = inquirer.prompt([
     {

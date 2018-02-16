@@ -9,6 +9,22 @@ program
     .version(require('../package.json').version, '-v, --version')
 
 program
+    .command('sync')
+    .description('sync the template from a url.')
+    .alias('s')
+    .action(function (cmd) {
+        require(req('sync'))
+    })
+
+program
+    .command('exact')
+    .description('exact current template.')
+    .alias('s')
+    .action(function (cmd) {
+        require(req('exact'))
+    })
+
+program
     .command('init')
     .description('init a new project with your template.')
     .alias('i')

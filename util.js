@@ -1,3 +1,4 @@
+const json = require('format-json')
 const fs = require('fs')
 const chalk = require('chalk')
 
@@ -42,7 +43,7 @@ function showTemplateList(list){
 function writeTemplateList(list, jsonPath, msg = 'Writing templates successfully!'){
     if(arguments.length < 2) throw new Error('lack of params.')
 
-    fs.writeFile(jsonPath, JSON.stringify(list), 'utf8',(err) => {
+    fs.writeFile(jsonPath, json.plain(list), 'utf8',(err) => {
         if(err){
             console.log('err')
         } else {
@@ -52,6 +53,18 @@ function writeTemplateList(list, jsonPath, msg = 'Writing templates successfully
     })    
 }
 
+function checkTemplateList(jsonPath){
+    try {
+        fs.statSync(jsonPath)
+    } catch (error) {
+        fs.openSync(jsonPath, 'w')
+        fs.writeFileSync(jsonPath, '{}')
+    }
+    return require(jsonPath)
+}
+
 exports.showTemplateList = showTemplateList
 
 exports.writeTemplateList = writeTemplateList
+
+exports.checkTemplateList = checkTemplateList
