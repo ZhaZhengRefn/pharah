@@ -53,6 +53,18 @@ function writeTemplateList(list, jsonPath, msg = 'Writing templates successfully
     })    
 }
 
+function checkTemplateList(jsonPath){
+    try {
+        fs.statSync(jsonPath)
+    } catch (error) {
+        fs.openSync(jsonPath, 'w')
+        fs.writeFileSync(jsonPath, '{}')
+    }
+    return require(jsonPath)
+}
+
 exports.showTemplateList = showTemplateList
 
 exports.writeTemplateList = writeTemplateList
+
+exports.checkTemplateList = checkTemplateList

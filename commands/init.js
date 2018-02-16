@@ -2,7 +2,10 @@ const download = require('download-git-repo')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
 const path = require('path')
-const templateList = require('../template.json')
+
+const checkTemplateList = require('../util').checkTemplateList
+
+let templateList = checkTemplateList(path.resolve(__dirname, '../template.json'))
 
 module.exports = inquirer.prompt([
     {

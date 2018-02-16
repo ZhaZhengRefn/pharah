@@ -1,15 +1,18 @@
 const inquirer = require('inquirer')
 const path = require('path')
+const fs = require('fs')
 
-let templateList = require('../template.json')
 const showTemplateList = require('../util').showTemplateList
 const writeTemplateList = require('../util').writeTemplateList
+const checkTemplateList = require('../util').checkTemplateList
+
+let templateList = checkTemplateList(path.resolve(__dirname, '../template.json'))
 
 module.exports = inquirer.prompt([
     {
         type: 'input',
         name: 'name',
-        message: 'input the name of this template:   ',
+        message: 'input the name of this template:',
         validate(val){
             val = val.trim()
             if(!val || !val.length){
@@ -27,7 +30,7 @@ module.exports = inquirer.prompt([
     {
         type: 'input',
         name: 'gitParams',
-        message: 'input the ownerName/repositoryName, such as: tj/commander.js:   ',
+        message: 'input the ownerName/repositoryName, such as: tj/commander.js:',
         validate(val){
             val = val.trim()
             if(!val || !val.length){
@@ -45,7 +48,7 @@ module.exports = inquirer.prompt([
     {
         type: 'input',
         name: 'branch',
-        message: 'input the branch name where this template belongs to:   ',
+        message: 'input the branch name where this template belongs to:',
         validate(val){
             val = val.trim()
             if(!val || !val.length){
