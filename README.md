@@ -5,14 +5,14 @@ A cli that aims to managing template code.
 ## Usage
 
 ### Notice
-This tool aims to managing template code by maintaining a JSON of all template repository.
+pharah-cli aims to managing template code by maintaining a JSON of all template repository.
 
 You could specify a template with owner, repository and branch. Like this:
 ![intro][2]
 
 ### Install
 ```sh
-npm install -g pharah
+npm install -g pharah-cli
 ```
 
 ### Show all templates
