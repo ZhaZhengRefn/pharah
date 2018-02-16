@@ -1,16 +1,119 @@
-# pharah
+# Pharah
 A cli that aims to managing template code.
+![Pharah][1]
 
-## 目的
-公司产品线越来越多，不同产品会使用到不同的代码模板，希望通过一款工具来管理所有的模板。
+## Usage
 
-## 细化需求
-- 模板代码通过一份json来管理，暂时默认模块放置于github上。每份模板包含了以下信息：name(模板别名)，owner/project_name(github上的仓库地址)，branch(分支名，同一个仓库不同分支可以属于不同的模板)；
+### Notice
+This tool aims to managing template code by maintaining a JSON of all template repository.
 
-- 模板配置表可以通过update命令更新 /* TODO */
+You could specify a template with owner, repository and branch. Like this:
+![intro][2]
 
-- 模板配置包含以下几个操作: add / delete / list / patch。分别对应增删查改
+### Install
+```sh
+npm install -g pharah
+```
 
-- 使用模板: ```pharah init <name>```
+### Show all templates
+```sh
+//In
+$ pharah list
 
-## 项目结构
+//out
+╔═══════════════╤═════════════════════╤════════╗
+║ Template Name │ Owner/Name          │ Branch ║
+╟───────────────┼─────────────────────┼────────╢
+║ pharah        │ ZhaZhengRefn/pharah │ master ║
+╚═══════════════╧═════════════════════╧════════╝
+```
+
+### Add an template
+```sh
+$ pharah add
+
+? input the name of this template: pharah
+? input the ownerName/repositoryName, such as: tj/commander.js: ZhaZhengRefn/pharah
+? input the branch name where this template belongs to: master
+
+╔═══════════════╤═════════════════════╤════════╗
+║ Template Name │ Owner/Name          │ Branch ║
+╟───────────────┼─────────────────────┼────────╢
+║ pharah        │ ZhaZhengRefn/pharah │ master ║
+╚═══════════════╧═════════════════════╧════════╝
+```
+
+### Init a new project with the template
+```sh
+$ pharah init
+
+? Which template would you like to use ? pharah
+? Input the name of new project. pharah-demo
+? Input the path that you want to init the project. /Users/zhazheng/www/my_project
+✔ Init the project successfully!
+```
+
+### Delete a template or all of them
+```sh
+$ pharah delete
+
+? Which template would you want to delete ? pharah
+? Deleting a template can not be reverted. Sure? Yes
+✔ Writing templates successfully!
+╔═══════════════╤════════════╤════════╗
+║ Template Name │ Owner/Name │ Branch ║
+╚═══════════════╧════════════╧════════╝
+```
+
+```sh
+$ pharah delete --all
+
+? Delete all templates ? Yes
+✔ Writing templates successfully!
+╔═══════════════╤════════════╤════════╗
+║ Template Name │ Owner/Name │ Branch ║
+╚═══════════════╧════════════╧════════╝
+```
+
+### Update a template
+```sh
+$ pharah update
+
+? input the name of the template that you want to update: pharah
+? input the ownerName/repositoryName, such as: tj/commander.js: ZhaZhengRefn/pharah
+? input the branch name where this template belongs to: develop  //here, change the branch name.
+✔ Writing templates successfully!
+╔═══════════════╤═════════════════════╤═════════╗
+║ Template Name │ Owner/Name          │ Branch  ║
+╟───────────────┼─────────────────────┼─────────╢
+║ pharah        │ ZhaZhengRefn/pharah │ develop ║
+╚═══════════════╧═════════════════════╧═════════╝
+```
+
+### Sync the template list from remote
+```sh
+$ pharah sync
+
+? Url of the template.json:  http://www.refn.com/template.json
+? Merge or Replace your current template?  (Use arrow keys)
+❯ merge
+  replace
+```
+
+### Exact the template to a specific path
+You could input `pwd` to get the path.
+```sh
+$ pharah exact
+? Input the path you want to exact the template.json to. /Users/zhazheng/www/my_project
+
+
+✔ Writing templates successfully!
+╔═══════════════╤═════════════════════╤═════════╗
+║ Template Name │ Owner/Name          │ Branch  ║
+╟───────────────┼─────────────────────┼─────────╢
+║ pharah        │ ZhaZhengRefn/pharah │ develop ║
+╚═══════════════╧═════════════════════╧═════════╝
+```
+
+ [1]: http://o8swwgh2r.bkt.clouddn.com/Pharah.full.2043469.jpg
+ [2]: http://o8swwgh2r.bkt.clouddn.com/pharah-intro.jpg
