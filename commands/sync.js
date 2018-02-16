@@ -34,9 +34,8 @@ module.exports = inquirer.prompt([
     }
 ])
 .then(({ url, mode }) => {
-    download(url, path.resolve(__dirname, '../'), { encoding: 'utf8' })
+    download(url, { encoding: 'utf8' })
     .then(data => {
-        
         try {
             data = JSON.parse(data)
         } catch (error) {
@@ -46,8 +45,11 @@ module.exports = inquirer.prompt([
         if(mode === 'merge'){
             templateList = Object.assign(templateList, data)
         } else if(mode === 'replace'){
-            templateList = data
+            templateList = Object.assign({}, data)
         }
         writeTemplateList(templateList, path.resolve(__dirname, '../template.json'))
+    })
+    .catch(e => {
+        console.log(e)
     })
 })
