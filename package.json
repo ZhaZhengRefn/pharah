@@ -1,6 +1,6 @@
 {
-  "name": "pharah",
-  "version": "1.0.0",
+  "name": "pharah-cli",
+  "version": "1.0.4",
   "description": "A cli that aims to managing template code.",
   "main": "index.js",
   "bin": {
