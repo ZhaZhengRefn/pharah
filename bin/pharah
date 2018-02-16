@@ -9,6 +9,14 @@ program
     .version(require('../package.json').version, '-v, --version')
 
 program
+    .command('init')
+    .description('init a new project with your template.')
+    .alias('i')
+    .action(function (cmd) {
+        require(req('init'))
+    })
+
+program
     .command('add')
     .description('add a new template.')
     .alias('a')
