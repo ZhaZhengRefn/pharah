@@ -3,7 +3,7 @@
 const program = require('commander')
 const path = require('path')
 
-const req = command => path.resolve('./commands/', command)
+const req = command => path.resolve(__dirname, '../commands/', command)
 
 program
     .version(require('../package.json').version, '-v, --version')

@@ -1,10 +1,10 @@
 {
   "name": "pharah-cli",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "A cli that aims to managing template code.",
   "main": "index.js",
   "bin": {
-    "pharah": "./bin/pharah"
+    "pharah": "bin/pharah"
   },
   "scripts": {},
   "repository": {
