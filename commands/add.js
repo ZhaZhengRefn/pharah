@@ -2,7 +2,6 @@ const inquirer = require('inquirer')
 const path = require('path')
 const fs = require('fs')
 
-const showTemplateList = require('../util').showTemplateList
 const writeTemplateList = require('../util').writeTemplateList
 const checkTemplateList = require('../util').checkTemplateList
 
